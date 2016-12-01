@@ -2,9 +2,52 @@
 <html>
   <head>
     <title>{{title}}</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    {{{body}}}
+		<header>
+
+			<nav class="navbar navbar-fixed-top navbar-light bg-faded">
+				<div class="container">
+					<a class="navbar-brand" href="/">ALT Inv</a>
+
+					<ul class="nav navbar-nav float-xs-right">
+						{{#if user}}
+							<li class="nav-item dropdown">
+					      <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					        <img class="avatar-nav image-fluid rounded-circle" src="{{user.photo_url}}" alt="User photo" />
+					      </a>
+					      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+					        <a class="dropdown-item" href="/user/dashboard">Dashboard</a>
+					        <a class="dropdown-item" href="/user/settings">Settings</a>
+					        <a class="dropdown-item" href="/logout">Logout</a>
+					      </div>
+					    </li>
+						{{else}}
+							<li class="nav-item">
+								<a class="nav-link btn btn-outline-success" href="/auth/google">Log in with Google</a>
+							</li>
+						{{/if}}
+					</ul>
+				</div>
+
+			</nav>
+
+		</header>
+		<main>
+			{{{body}}}
+		</main>
+
+
+		<script
+		  src="https://code.jquery.com/jquery-3.1.1.min.js"
+		  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+		  crossorigin="anonymous">
+		</script>
+		<script
+			src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js"
+			integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous">
+		</script>
   </body>
 </html>
