@@ -10,7 +10,7 @@ router.get('/dashboard', isLoggedIn, function(req, res, next) {
 		if(req.user.newUser == true) {
 			res.redirect('/register');
 		} else {
-			res.render('user/profile', {
+			res.render('user/dashboard', {
 					user: req.user,
 					title: '| Dashboard',
 			})
@@ -32,7 +32,7 @@ router.post('/register', isLoggedIn, function(req, res, next) {
 	userQueries.signUp(req.user.id, req.body.bio)
 	.then(function(data) {
 		req.user.newUser = false;
-		res.redirect('/profile');
+		res.redirect('/dashboard');
 	})
 	.catch(function(error) {
 		return next(error);
