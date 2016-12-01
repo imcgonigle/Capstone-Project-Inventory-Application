@@ -1,3 +1,9 @@
 <div class="container jumbotron">
 	<h1>Index.hbs</h1>
+	<hr>
+	{{#if user}}
+	<h1>Hello {{user.first_name}}</h1>
+	{{else}}
+	<a href="/auth/google"><img src="/images/google_signin_btn.png" alt="Sign in with google" /></a>
+	{{/if}}
 </div>
