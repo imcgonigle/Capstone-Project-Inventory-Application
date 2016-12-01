@@ -4,9 +4,8 @@ var passport = require('passport');
 
 // route for home page
 router.get('/', function(req, res, next) {
-		res.render('index', {
-			user: req.user,
-			title: 'Alt Inventory'
+		res.render('static/index', {
+			user: req.user
 		});
 });
 

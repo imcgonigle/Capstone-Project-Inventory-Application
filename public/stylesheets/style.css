@@ -1,3 +1,13 @@
+header {
+	margin-bottom: 50px;
+}
+
+main {
+	padding-top: 30px;
+}
+.navbar-fixed-top {
+	background-color: rgb(14, 190, 255);
+}
 .avatar-nav {
-	height: 30px
+	height: 30px;
 }
