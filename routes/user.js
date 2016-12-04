@@ -7,17 +7,6 @@ router.get('/', function(req, res, next) {
     res.send('respond with a resource');
 });
 
-router.get('/dashboard', isLoggedIn, function(req, res, next) {
-    if (req.user.newUser == true) {
-        res.redirect('/register');
-    } else {
-        res.render('dashboard/index', {
-            user: req.user,
-            title: '| Dashboard',
-        });
-    };
-});
-
 router.get('/dashboard/collections', isLoggedIn, function(req, res, next) {
     res.render('dashboard/collections', {
         user: req.user,
@@ -68,11 +57,11 @@ router.post('/update', isLoggedIn, function(req, res, next) {
         email: req.body.email,
         about: req.body.about
     };
-    console.log(userInfo);
+
     userQueries.updateUser(userInfo)
         .then(function(data) {
             console.log("Updated User:", data);
-            res.redirect('/user/dashboard');
+            res.redirect('/dashboard');
         })
         .catch(function(error) {
             return next(error);
@@ -86,6 +75,6 @@ function isLoggedIn(req, res, next) {
         return next();
     }
     res.redirect('/');
-}
+};
 
 module.exports = router;
