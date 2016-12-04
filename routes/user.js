@@ -53,27 +53,23 @@ router.get('/update', isLoggedIn, function(req, res, next) {
 router.post('/update', isLoggedIn, function(req, res, next) {
 
     let userInfo = {
-        google_id: req.user.google_id,
+        googleID: req.user.google_id,
         email: req.body.email,
         about: req.body.about
     };
 
     userQueries.updateUser(userInfo)
         .then(function(data) {
-            console.log("Updated User:", data);
             res.redirect('/dashboard');
         })
-        .catch(function(error) {
-            return next(error);
-        });
-
+        .catch(function(error) {});
 });
 
 function isLoggedIn(req, res, next) {
     // if user is authenticated in the session, carry on
     if (req.isAuthenticated()) {
         return next();
-    }
+    };
     res.redirect('/');
 };
 
