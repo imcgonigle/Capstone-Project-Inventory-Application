@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var users = require('./routes/user');
+var dashboard = require('./routes/dashboard');
 
 var app = express();
 var passport = require('passport');
@@ -30,9 +31,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // passport stuff
 app.use(session({
-	secret: process.env.SECRET,
-	saveUninitialized: true,
-	resave: false
+    secret: process.env.SECRET,
+    saveUninitialized: true,
+    resave: false
 })); // session secret
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
@@ -41,12 +42,13 @@ app.use(flash());
 
 app.use('/', routes);
 app.use('/user', users);
+app.use('/dashboard', dashboard);
 //
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
+    var err = new Error('Not Found');
+    err.status = 404;
+    next(err);
 });
 
 // error handlers
@@ -54,33 +56,33 @@ app.use(function(req, res, next) {
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
-  app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('static/error', {
-      message: err.message,
-      error: err,
-			user: req.user
+    app.use(function(err, req, res, next) {
+        res.status(err.status || 500);
+        res.render('static/error', {
+            message: err.message,
+            error: err,
+            user: req.user
+        });
     });
-  });
 }
 
 // production error handler
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
-  res.status(err.status || 500);
-  res.render('static/error', {
-    message: err.message,
-    error: {},
-		user: req.user
-  });
+    res.status(err.status || 500);
+    res.render('static/error', {
+        message: err.message,
+        error: {},
+        user: req.user
+    });
 });
 
 function isLoggedIn(req, res, next) {
-  // if user is authenticated in the session, carry on
-	if (req.isAuthenticated()){
-		return next();
-	}
-  res.redirect('/');
+    // if user is authenticated in the session, carry on
+    if (req.isAuthenticated()) {
+        return next();
+    }
+    res.redirect('/');
 }
 
 module.exports = app;
