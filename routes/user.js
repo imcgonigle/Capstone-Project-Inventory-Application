@@ -11,7 +11,7 @@ router.get('/dashboard', isLoggedIn, function(req, res, next) {
     if (req.user.newUser == true) {
         res.redirect('/register');
     } else {
-        res.render('user/dashboard', {
+        res.render('dashboard/index', {
             user: req.user,
             title: '| Dashboard',
         });
@@ -19,7 +19,7 @@ router.get('/dashboard', isLoggedIn, function(req, res, next) {
 });
 
 router.get('/dashboard/collections', isLoggedIn, function(req, res, next) {
-    res.render('user/dashboard/collections', {
+    res.render('dashboard/collections', {
         user: req.user,
         title: '| Collections'
     });
