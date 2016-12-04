@@ -6,8 +6,10 @@ exports.up = function(knex, Promise) {
 		table.string('email').notNullable().unique();
 		table.string('first_name');
 		table.string('last_name');
+		table.integer('number_of_collections');
+		table.integer('number_of_items');
 		table.string('photo_url');
-		table.text('bio');
+		table.text('about');
 		table.dateTime('created_at');
 		table.dateTime('updated_at');
 	});

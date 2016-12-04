@@ -1,35 +1,36 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>AlT Inv {{title}}</title>
+    <title>ALT Inv {{title}}</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
     <link rel='stylesheet' href='/stylesheets/style.css' />
 		<link rel="stylesheet" href="/stylesheets/font-awesome.min.css">
   </head>
   <body>
 		<header>
-
-			<nav class="navbar navbar-fixed-top navbar-light bg-faded">
+			<nav class="navbar navbar-fixed-top navbar-light bg-faded {{#if index}} index navbar-dark{{/if}}">
 				<div class="container">
-					<a class="navbar-brand" href="/">ALT Inv</a>
+					<a class="navbar-brand brand-logo" href="/">ALT Inv</a>
 
 					<ul class="nav navbar-nav float-xs-right">
 						{{#if user}}
 							<li class="nav-item dropdown">
 								<a class="nav-link dropdown-toggle" href="#" id="addDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									<i class="fa fa-plus" aria-hidden="true"></i>
+									<i class="fa fa-plus fa-lg" aria-hidden="true"></i>
 								</a>
 								<div class="dropdown-menu dropdown-menu-right" aria-labelledby="addDropdownMenuLink">
-					        <a class="dropdown-item" href="/user/dashboard">New Collection</a>
-					        <a class="dropdown-item" href="/user/settings">Add Item</a>
+					        <a class="dropdown-item" href="/user/collection/new">Start A Collection</a>
+					        <a class="dropdown-item" href="/collection/add">Add Item</a>
 					      </div>
 							</li>
 
 							<li class="nav-item dropdown">
-					      <a class="nav-link dropdown-toggle" href="http://example.com" id="userDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					      <a class="nav-link dropdown-toggle" href="#" id="userDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					        <img class="avatar-nav image-fluid rounded-circle" src="{{user.photo_url}}" alt="User photo" />
 					      </a>
 					      <div class="dropdown-menu" aria-labelledby="userDropdownMenuLink">
+									<h6 class="dropdown-header">{{user.first_name}} {{user.last_name}}</h6>
+									<div class="dropdown-divider"></div>
 					        <a class="dropdown-item" href="/user/dashboard">Dashboard</a>
 					        <a class="dropdown-item" href="/user/settings">Settings</a>
 									<div class="dropdown-divider"></div>
@@ -38,7 +39,7 @@
 					    </li>
 						{{else}}
 							<li class="nav-item">
-								<a class="nav-link" href="/auth/google"><img src="/images/google_signin_btn.png" alt="Sign in with Google" /></a>
+								<a class="nav-link" href="/auth/google">Sign In</a>
 							</li>
 						{{/if}}
 					</ul>
@@ -47,10 +48,8 @@
 			</nav>
 
 		</header>
-		<main>
-			{{{body}}}
-		</main>
 
+			{{{body}}}
 
 		<script
 		  src="https://code.jquery.com/jquery-3.1.1.min.js"

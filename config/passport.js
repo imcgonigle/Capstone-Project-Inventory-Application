@@ -11,7 +11,14 @@ module.exports = function(passport) {
 
   // used to deserialize the user
   passport.deserializeUser(function(user, done) {
-		done(null, user)
+		console.log('deserialize', user);
+		userQueries.getUserByGoogleID(user.google_id)
+		.then(function(data) {
+			done(null, data[0]);
+		})
+		.catch(function(error) {
+			done(error);
+		});
   });
 
 
@@ -40,13 +47,15 @@ module.exports = function(passport) {
 					newUser.photoURL = profile.photos[0].value;
 
 					userQueries.addUser(newUser)
-					.then(function(user) {
+					.then(function() {
+						let user = {};
+						user.google_id = profile.id;
 						user.newUser = true;
 						done(null, user);
 					})
-					.catch(function(err, next) {
+					.catch(function(err) {
 						console.log('Error adding user');
-						next(err);
+						done(err);
 					})
 				}
 			})
