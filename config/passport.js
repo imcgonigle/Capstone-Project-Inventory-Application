@@ -30,16 +30,18 @@ module.exports = function(passport) {
             callbackURL: process.env.GOOGLE_CALLBACK_URL,
         },
         function(token, refreshToken, profile, done) {
+            console.log("got user: ", profile)
             process.nextTick(function() {
-
+                console.log('in tick');
                 userQueries.getUserByGoogleID(profile.id)
                     .then(function(users) {
                         let user = users[0];
 
                         if (user && user.google_id == profile.id) {
+                            console.log('found user ');
                             done(null, user);
                         } else {
-
+                            console.log('adding new user')
                             let newUser = {
                                 googleID: profile.id,
                                 email: profile.emails[0].value,
@@ -51,7 +53,7 @@ module.exports = function(passport) {
 
                             userQueries.addUser(newUser)
                                 .then(function() {
-
+                                    console.log('Added user');
                                     let user = {
                                         google_id: profile.id,
                                         newUser: true
@@ -60,15 +62,17 @@ module.exports = function(passport) {
                                     done(null, user);
                                 })
                                 .catch(function(err) {
+                                    console.log('Failed to add user');
                                     done(err, null);
                                 })
                         }
                     })
                     .catch(function(err) {
+                        console.log("querying for user failed");
                         done(err, null);
                     })
             });
 
         }));
-				
+
 };
