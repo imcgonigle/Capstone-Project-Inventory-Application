@@ -63,9 +63,22 @@
 										<div class="modal-body">
 											<form id="new-collection-form" action="/dashboard/collection/new" method="POST" enctype="multipart/form-data">
 												<div class="form-group">
-													<label for="thumbnail">Collection Thumbnail</label>
-													<input type="file" class="form-control-file" name="thumbnail" id="thumbnail" aria-describedby="fileHelp">
-    											<small id="fileHelp" class="form-text text-muted">This will be used for your dashboard.</small>
+													<div class="row">
+														<div class="col-lg-9">
+															<label for="thumbnail">Collection Thumbnail</label>
+															<input type="file" class="form-control-file" name="thumbnail" id="thumbnail" aria-describedby="fileHelp">
+															<small id="fileHelp" class="form-text text-muted">This will be used for your dashboard.</small>
+														</div>
+														<div class="col-lg-3">
+															<label for="visible">Visibility</label>
+															<select class="form-control" id="visible">
+																<option>Public</option>
+																<option>Friends</option>
+																<option>Just You</option>
+															</select>
+														</div>
+													</div>
+													
 												</div>
 												<div class="form-group">
 													<label for="name">Name</label>

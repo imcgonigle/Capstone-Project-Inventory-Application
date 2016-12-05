@@ -8,7 +8,7 @@ var storage = multer.diskStorage({
         cb(null, path);
     },
     filename: function(req, file, cb) {
-        cb(null, 'collection' + req.user.collection_count + '.' + file.originalname.slice(-3));
+        cb(null, req.user.id + 'collection' + req.user.collection_count + '.' + file.originalname.slice(-3));
     }
 });
 

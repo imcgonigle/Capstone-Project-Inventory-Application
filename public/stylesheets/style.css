@@ -11,14 +11,18 @@ main {
     padding-top: 60px;
 }
 
+#title {
+    padding: 0px 30px;
+    font-family: Roboto;
+    font-weight: 400;
+    font-size: 1.7rem;
+    letter-spacing: 2px;
+}
+
 .landing-page-info {
     box-shadow: -4px 2px 6px grey;
     background: grey;
     height: 60vh;
-}
-
-.brand-logo {
-    color: rgb(43, 144, 217);
 }
 
 .dashboard-controls {
@@ -69,10 +73,20 @@ main {
     width: 150px;
 }
 
+.modal-header {
+    background: deepskyblue;
+    color: white;
+}
+
+.new-collection:focus {
+    color: white;
+    outline: none;
+}
+
 .new-collection {
     text-align: center;
     color: white;
-    background: #1484DF;
+    background: #FF4081;
     border-radius: 50%;
     text-align: center;
     padding: 10px;

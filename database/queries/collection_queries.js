@@ -42,7 +42,8 @@ module.exports = {
     updateCollection: function(collection) {
         return Collections().where('id', collection.id).update({
             name: collection.name,
-            description: collection.description
+            description: collection.description,
+            updated_at: new Date()
         });
     }
 }

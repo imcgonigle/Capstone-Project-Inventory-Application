@@ -9,6 +9,7 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var users = require('./routes/user');
 var dashboard = require('./routes/dashboard');
+var items = require('./routes/items')
 
 var app = express();
 var passport = require('passport');
@@ -36,6 +37,7 @@ app.use(session({
     saveUninitialized: true,
     resave: false
 })); // session secret
+
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash());
@@ -44,7 +46,9 @@ app.use(flash());
 app.use('/', routes);
 app.use('/user', users);
 app.use('/dashboard', dashboard);
-//
+app.user('/items', items);
+
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
     var err = new Error('Not Found');

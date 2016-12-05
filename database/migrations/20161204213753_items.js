@@ -1,7 +1,10 @@
 exports.up = function(knex, Promise) {
     return knex.schema.createTable('items', function(table) {
         table.increments('id');
-        table.integer('collection_id');
+        table.integer('collection_id')
+            .refernces('id')
+            .inTable('collections')
+            .onDelete('CASCADE');
         table.string('name').notNullable().unique();
         table.string('brand');
         table.string('serial_number');
