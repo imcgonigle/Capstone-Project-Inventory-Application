@@ -38,5 +38,11 @@ module.exports = {
     },
     deleteCollection: function(collectionID) {
         return Collections().where('id', collectionID).del();
+    },
+    updateCollection: function(collection) {
+        return Collections().where('id', collection.id).update({
+            name: collection.name,
+            description: collection.description
+        });
     }
 }

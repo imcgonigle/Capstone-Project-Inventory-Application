@@ -86,6 +86,30 @@ router.post('/collection/delete/:id', isLoggedIn, function(req, res, next) {
         });
 });
 
+router.post('/collection/rename/:id', isLoggedIn, function(req, res, next) {
+    collectionQueries.getCollectionByID(req.params.id)
+        .then(collections => {
+            let collection = collections[0];
+            if (req.user.id == collection.owner_id) {
+                collection.name = req.body.name;
+                collection.description = req.body.description;
+                collectionQueries.updateCollection(collection)
+                    .then(data => {
+                        res.redirect('/dashboard/collection/' + collection.id);
+                    })
+                    .catch(error => {
+                        return next(error);
+                    })
+            } else {
+                res.redirect('/');
+            }
+        })
+        .catch(error => {
+            return next(error);
+        });
+
+});
+
 router.get('/collection/:id', isLoggedIn, function(req, res, next) {
     collectionQueries.getCollectionByID(req.params.id)
         .then(collections => {

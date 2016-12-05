@@ -30,7 +30,7 @@
 				<div class="container">
           <div class="row">
             <div class="col-lg-10">
-              <span> {{ collection.name }}</span>
+              <span class="collection-title"> {{ collection.name }}</span>
             </div>
             <div class="col-lg-2">
               <span>Items: {{ collection.item_count}} </span>
@@ -38,7 +38,7 @@
 									<i class="fa fa-ellipsis-v fa-lg " aria-hidden="true"></i>
 								</a>
 								<div class="dropdown-menu">
-					        <a class="dropdown-item disabled" href="/dashboard/collection/update">Rename</a>
+					        <a class="dropdown-item" data-toggle="modal" data-target="#rename-collection-modal" href="#">Edit</a>
 									<div class="dropdown-divider"></div>
 					        <a class="text-danger dropdown-item" data-toggle="modal" data-target="#delete-collection-modal" href="#">Delete</a>
 					      </div>
@@ -119,27 +119,56 @@
 </main>
 
 <div class="modal fade" id="delete-collection-modal">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-					<h4 class="modal-title">Are you sure?</h4>
-				</div>
-				<div class="modal-body">
-					<form id="delete-collection-form" action="/dashboard/collection/delete/{{collection.id}}" method="POST">
-						<div class="form-group">
-							<label for="name">Type the name of the collection to delete</label>
-							<input class="form-control" type="text" name="name">
-						</div>
-					</form>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-					<button type="submit" form="delete-collection-form" class="btn btn-danger">Delete</button>
-				</div>
-			</div><!-- /.modal-content -->
-		</div><!-- /.modal-dialog -->
-	</div><!-- /.modal -->
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title">Are you sure?</h4>
+			</div>
+			<div class="modal-body">
+				<form id="delete-collection-form" action="/dashboard/collection/delete/{{collection.id}}" method="POST">
+					<div class="form-group">
+						<label for="name">Type the name of the collection to delete</label>
+						<input class="form-control" type="text" name="name">
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+				<button type="submit" form="delete-collection-form" class="btn btn-danger">Delete</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id="rename-collection-modal">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title">Edit</h4>
+			</div>
+			<div class="modal-body">
+				<form id="rename-collection-form" action="/dashboard/collection/rename/{{collection.id}}" method="POST">
+					<div class="form-group">
+						<label for="name">Enter a new name</label>
+						<input class="form-control" type="text" name="name" value="{{collection.name}}" >
+					</div>
+					<div class="form-group">
+						<label for="description">Description</label>
+						<textarea class="form-control" name="description" placeholder="A little about this collection...">{{collection.description}}</textarea>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+				<button type="submit" form="rename-collection-form" class="btn btn-success">Update</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 
