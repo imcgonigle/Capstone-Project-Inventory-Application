@@ -26,8 +26,8 @@ module.exports = {
             last_name: newUser.lastName,
             photo_url: newUser.photoURL,
             about: '',
-            number_of_collections: 0,
-            number_of_items: 0,
+            collection_count: 0,
+            item_count: 0,
             created_at: new Date(),
             updated_at: new Date()
         })
@@ -47,5 +47,4 @@ module.exports = {
             updated_at: new Date()
         }).returning('google_id');
     }
-
 };

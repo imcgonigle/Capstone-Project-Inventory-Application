@@ -1,82 +1,115 @@
 body {
-	height: 100vh;
+    height: 100vh;
 }
 
 nav {
-	box-shadow: 1px 1px 6px grey;
+    box-shadow: 1px 1px 6px grey;
+    background: #673AB7;
 }
 
 main {
-	padding-top: 60px;
+    padding-top: 60px;
 }
 
 .landing-page-info {
-	box-shadow: -4px 2px 6px grey;
-	background: grey;
-	height: 60vh;
-}
-
-.background-img{
-	height: 75vh;
-	width: 100%;
-	float: left;
+    box-shadow: -4px 2px 6px grey;
+    background: grey;
+    height: 60vh;
 }
 
 .brand-logo {
-	color: rgb(43, 144, 217);
+    color: rgb(43, 144, 217);
 }
 
 .dashboard-controls {
-	padding: 20px 0;
-	background: #EEEEEE;
-	border-right: 1px solid #CCCCCC;
-}
-.dashboard-controls .row {
-	padding: 14px 20px;
-}
-.control-title {
-	border-bottom: 1px solid #CCCCCC;
-	margin-bottom: 20px;
-}
-.control-title a:hover {
-	text-decoration: none;
-	cursor: pointer;
+    padding: 20px 0;
+    background: #EEEEEE;
+    border-right: 1px solid #CCCCCC;
 }
 
-.dashboard-controls a{
-	color: #444444;
+.dashboard-controls .row {
+    padding: 14px 20px;
+}
+
+.control-title {
+    border-bottom: 1px solid #CCCCCC;
+    margin-bottom: 20px;
+}
+
+.control-title a:hover {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.dashboard-controls a {
+    color: #444444;
 }
 
 .dashboard-view {
-	background: #FFFFFF;
-	padding: 40px;
-}
-
-.dashboard-view a {
-
+    background: #FFFFFF;
+    padding: 40px;
 }
 
 .dashboard-view a:hover {
-	text-decoration: none;
-}
-.collection {
-	text-align: center;
-	color: rgb(141, 204, 233);
-	padding: 30px;
-	width: 80%;
-	box-shadow: 1px 1px 6px grey;
+    text-decoration: none;
 }
 
-.navbar-fixed-top {
-	background: #FFFFFF;
+.collection {
+    text-align: center;
+    color: rgba(51, 51, 51, 1);
+    padding: 15px, 10px;
+    box-shadow: 1px 1px 6px grey;
+    margin: 10px;
+    height: 259px;
+    max-width: 200px;
 }
+
+.collection img {
+    height: 150px;
+    width: 150px;
+}
+
+.new-collection {
+    text-align: center;
+    color: white;
+    background: #1484DF;
+    border-radius: 50%;
+    text-align: center;
+    padding: 10px;
+    width: 50px;
+    height: 50px;
+    box-shadow: 1px 1px 6px grey;
+    bottom: 50px;
+    right: 100px;
+    position: fixed;
+    z-index: 3000;
+}
+
+.new-collection:hover {
+    text-decoration: none;
+    color: white;
+}
+
+.card-img {
+    width: 100%;
+}
+
+.col .navbar-fixed-top {
+    background: #FFFFFF;
+}
+
 .avatar-nav {
-	height: 30px;
+    height: 30px;
 }
 
 .index {
-	background: rgba(51, 51, 51, .0);
-	box-shadow: none;
-	/*border-bottom: 1px solid rgba(80, 80, 80, .3);*/
-	color: #EEEEEE;
+    background: rgba(51, 51, 51, .8);
+    box-shadow: none;
+    /*border-bottom: 1px solid rgba(80, 80, 80, .3);*/
+    color: #EEEEEE;
+}
+
+.collection-dropdown {
+    margin: 30px;
+    color: rgb(51, 51, 51)
 }
