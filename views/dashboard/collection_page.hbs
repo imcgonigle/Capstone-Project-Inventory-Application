@@ -35,13 +35,13 @@
             <div class="col-lg-2">
               <span>Items: {{ collection.item_count}} </span>
 							<a class="collection-dropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									<i class="fa fa-ellipsis-v fa-lg " aria-hidden="true"></i>
-								</a>
-								<div class="dropdown-menu">
-					        <a class="dropdown-item" data-toggle="modal" data-target="#rename-collection-modal" href="#">Edit</a>
-									<div class="dropdown-divider"></div>
-					        <a class="text-danger dropdown-item" data-toggle="modal" data-target="#delete-collection-modal" href="#">Delete</a>
-					      </div>
+								<i class="fa fa-ellipsis-v fa-lg " aria-hidden="true"></i>
+							</a>
+							<div class="dropdown-menu">
+								<a class="dropdown-item" data-toggle="modal" data-target="#rename-collection-modal" href="#">Edit</a>
+								<div class="dropdown-divider"></div>
+								<a class="text-danger dropdown-item" data-toggle="modal" data-target="#delete-collection-modal" href="#">Delete</a>
+							</div>
             </div>
 						<div cass="col-lg-1">
 							
@@ -52,15 +52,13 @@
 						{{#each items}}
 						<div class="col-lg-3">
 							<div class="card text-xs-center">
-								<div class="card-header">
-									<a href="/dashboard/collection/{{this.id}}"> {{this.name}} </a>
-								</div>
-								<img class="card-img-top card-img" src="{{ this.thumbnail_url }}" alt="Collection thumbnail">
+								<img class="card-img-top card-img" src="{{ this.image_url}}" alt="Collection thumbnail">
 								<div class="card-block">
+									<h3>{{this.name}}</h3>
 									<p class="card-text">{{this.description}}</p>
 								</div>
 								<div class="card-footer text-muted">
-									items: {{ this.item_count }}
+									Rating: {{ this.rating }}
 								</div>
 							</div>
 						</div>
@@ -81,10 +79,10 @@
 											<h4 class="modal-title">New Item</h4>
 										</div>
 										<div class="modal-body">
-											<form id="new-item-form" action="item/add" method="POST" enctype="multipart/form-data">
+											<form id="new-item-form" action="/items/add/{{collection.id}}" method="POST" enctype="multipart/form-data">
 												<div class="form-group">
-													<label for="thumbnail">Item Image</label>
-													<input type="file" class="form-control-file" name="thumbnail" id="thumbnail" aria-describedby="fileHelp">
+													<label for="image_url">Item Image</label>
+													<input type="file" class="form-control-file" name="image_url" id="image_url" aria-describedby="fileHelp">
 												</div>
                         <div class="form-group">
 													<label for="name">Name</label>

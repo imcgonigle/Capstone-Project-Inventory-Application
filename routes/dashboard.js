@@ -16,7 +16,7 @@ var upload = multer({ storage: storage });
 
 const collectionQueries = require('../database/queries/collection_queries.js');
 
-router.get('/', isLoggedIn, function(req, res, next) {
+router.get('/', function(req, res, next) {
     collectionQueries.getCollectionCount(req.user.id)
         .then(data => {
             req.user.collection_count = data[0].count
@@ -30,7 +30,7 @@ router.get('/', isLoggedIn, function(req, res, next) {
         })
 });
 
-router.get('/collections', isLoggedIn, function(req, res, next) {
+router.get('/collections', function(req, res, next) {
     collectionQueries.getUsersCollections(req.user.id)
         .then(collections => {
             res.render('dashboard/collections', {
@@ -65,7 +65,7 @@ router.post('/collection/new', upload.single('thumbnail'), function(req, res, ne
 
 });
 
-router.post('/collection/delete/:id', isLoggedIn, function(req, res, next) {
+router.post('/collection/delete/:id', function(req, res, next) {
     collectionQueries.getCollectionByID(req.params.id)
         .then(collections => {
             let collection = collections[0];
@@ -86,7 +86,7 @@ router.post('/collection/delete/:id', isLoggedIn, function(req, res, next) {
         });
 });
 
-router.post('/collection/rename/:id', isLoggedIn, function(req, res, next) {
+router.post('/collection/rename/:id', function(req, res, next) {
     collectionQueries.getCollectionByID(req.params.id)
         .then(collections => {
             let collection = collections[0];
@@ -110,18 +110,35 @@ router.post('/collection/rename/:id', isLoggedIn, function(req, res, next) {
 
 });
 
-router.get('/collection/:id', isLoggedIn, function(req, res, next) {
+router.get('/collection/:id', function(req, res, next) {
     collectionQueries.getCollectionByID(req.params.id)
         .then(collections => {
             let collection = collections[0];
             collectionQueries.getCollectionItems(req.params.id)
                 .then(items => {
-                    res.render('dashboard/collection_page', {
-                        user: req.user,
-                        items: items,
-                        collection: collection,
-                        title: '| Collection'
-                    });
+                    if (collection.item_count == items.length) {
+                        res.render('dashboard/collection_page', {
+                            user: req.user,
+                            items: items,
+                            collection: collection,
+                            title: '| Collection'
+                        });
+                    } else {
+                        collection.item_count = items.length;
+                        collectionQueries.updateCollection(collection)
+                            .then(data => {
+                                res.render('dashboard/collection_page', {
+                                    user: req.user,
+                                    items: items,
+                                    collection: collection,
+                                    title: '| Collection'
+                                });
+                            })
+                            .catch(error => {
+                                return next(error);
+                            });
+                    };
+
                 })
                 .catch(error => {
                     return next(error);
@@ -133,19 +150,11 @@ router.get('/collection/:id', isLoggedIn, function(req, res, next) {
 });
 
 
-router.get('/settings', isLoggedIn, function(req, res, next) {
+router.get('/settings', function(req, res, next) {
     res.render('dashboard/settings', {
         user: req.user,
         title: '| Settings'
     });
 });
-
-function isLoggedIn(req, res, next) {
-    // if user is authenticated in the session, carry on
-    if (req.isAuthenticated()) {
-        return next();
-    }
-    res.redirect('/');
-};
 
 module.exports = router;

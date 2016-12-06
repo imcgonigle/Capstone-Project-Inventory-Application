@@ -37,14 +37,10 @@ module.exports = {
             about: about
         });
     },
-    updateUser: function(userInfo) {
-        return Users().where('google_id', userInfo.googleID).update({
-            about: userInfo.about,
-            email: userInfo.email,
-            first_name: userInfo.firstName,
-            last_name: userInfo.lastName,
-            photo_url: userInfo.photoURL,
-            updated_at: new Date()
-        }).returning('google_id');
+    updateUser: function(user) {
+        user.updated_at = new Date();
+        return Users().where('google_id', userInfo.googleID)
+            .update(user)
+            .returning('google_id');
     }
 };

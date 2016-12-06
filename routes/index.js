@@ -3,7 +3,7 @@ var router = express.Router();
 var passport = require('passport')
 
 // route for home page
-router.get('/', function(req, res, next) {
+router.get('/', (req, res, next) => {
     res.render('static/index', {
         user: req.user,
         index: true
@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {
 });
 
 // route for logging out
-router.get('/logout', function(req, res) {
+router.get('/logout', (req, res) => {
     req.logout();
     res.redirect('/');
 });

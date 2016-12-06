@@ -44,9 +44,15 @@ app.use(flash());
 
 
 app.use('/', routes);
+app.use(function(req, res, next) {
+    if (req.isAuthenticated()) {
+        return next();
+    };
+    res.redirect('/');
+});
 app.use('/user', users);
 app.use('/dashboard', dashboard);
-app.user('/items', items);
+app.use('/items', items);
 
 
 // catch 404 and forward to error handler

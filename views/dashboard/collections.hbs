@@ -31,18 +31,16 @@
 					<div class="row">
 						{{#each collections}}
 						<div class="col-lg-3">
-							<div class="card text-xs-center">
-								<div class="card-header">
-									<a href="/dashboard/collection/{{this.id}}"> {{this.name}} </a>
+							<a href="/dashboard/collection/{{this.id}}">
+								<div class="card text-xs-center collection-card">
+									<img class="card-img-top card-img" src="{{ this.thumbnail_url }}" alt="Collection thumbnail">
+									<div class="card-block">
+										<a href="/dashboard/collection/{{this.id}}"> {{this.name}} </a>
+										<p class="card-text">{{this.description}}</p>
+										Items: {{ this.item_count }}
+									</div>
 								</div>
-								<img class="card-img-top card-img" src="{{ this.thumbnail_url }}" alt="Collection thumbnail">
-								<div class="card-block">
-									<p class="card-text">{{this.description}}</p>
-								</div>
-								<div class="card-footer text-muted">
-									items: {{ this.item_count }}
-								</div>
-							</div>
+							</a>
 						</div>
 						{{/each}}
 					</div>
@@ -69,6 +67,7 @@
 															<input type="file" class="form-control-file" name="thumbnail" id="thumbnail" aria-describedby="fileHelp">
 															<small id="fileHelp" class="form-text text-muted">This will be used for your dashboard.</small>
 														</div>
+
 														<div class="col-lg-3">
 															<label for="visible">Visibility</label>
 															<select class="form-control" id="visible">

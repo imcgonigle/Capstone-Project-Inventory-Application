@@ -1,30 +1,26 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ALT Inv {{title}}</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Uplisting {{title}}</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
     <link rel='stylesheet' href='/stylesheets/style.css' />
 		<link rel="stylesheet" href="/stylesheets/font-awesome.min.css">
+		<link rel="stylesheet" href="/stylesheets/carousel.css">
   </head>
   <body>
 		<header>
-			<nav class="navbar navbar-fixed-top navbar-dark {{#if index}} index navbar-dark{{/if}}">
-				<div class="container-fluid">
-					<a class="navbar-brand brand-logo" id="title" href="/">Arp.list</a>
+			<nav class="navbar navbar-static-top navbar-dark {{#if index}} index navbar-dark{{/if}}">
+				<button class="navbar-toggler hidden-md-up float-xs-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"></button>
+				<a class="navbar-brand brand-logo" id="title" href="/">Uplisting</a>
+				<div class="container-fluid collapse navbar-toggleable-sm" id="navbarResponsive">
 
 					<ul class="nav navbar-nav float-xs-right">
+						
 						{{#if user}}
-							<li class="nav-item dropdown">
-								<a class="nav-link dropdown-toggle" href="#" id="addDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									<i class="fa fa-plus fa-lg" aria-hidden="true"></i>
-								</a>
-								<div class="dropdown-menu dropdown-menu-right" aria-labelledby="addDropdownMenuLink">
-					        <a class="dropdown-item" href="/user/collection/new">Start A Collection</a>
-					        <a class="dropdown-item" href="/collection/add">Add Item</a>
-					      </div>
-							</li>
 
-							<li class="nav-item dropdown">
+							<li class="nav-item dropdown hidden-sm-down">
 					      <a class="nav-link dropdown-toggle" href="#" id="userDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					        <img class="avatar-nav image-fluid rounded-circle" src="{{user.photo_url}}" alt="User photo" />
 					      </a>
@@ -37,6 +33,15 @@
 					        <a class="dropdown-item" href="/logout">Logout</a>
 					      </div>
 					    </li>
+							<li class="nav-item hidden-md-up">
+								<a class="nav-link" href="/dashboad/">Dashboard</a>
+							</li>
+							<li class="nav-item hidden-md-up">
+								<a class="nav-link" href="/dashboad/">Dashboard</a>
+							</li>
+							<li class="nav-item hidden-md-up">
+								<a class="nav-link" href="/dashboad/">Dashboard</a>
+							</li>
 						{{else}}
 							<li class="nav-item">
 								<a class="nav-link" href="/auth/google">Sign In</a>
@@ -44,7 +49,6 @@
 						{{/if}}
 					</ul>
 				</div>
-
 			</nav>
 
 		</header>
