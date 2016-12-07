@@ -2,7 +2,7 @@
 <main class="h-100">
 	<div class="container-fluid h-100">
 		<div class="row h-100">
-			<div class="dashboard-controls col-md-2 col-lg-2">
+			<div id="navbarResponsive" class="dashboard-controls col-md-2 col-lg-2 collapse navbar-toggleable-sm">
 				<div class="container-fluid">
 						<div class="row">
 							<div class="dashboard-control col-sm-3 col-md-12">
@@ -12,7 +12,7 @@
 							</div>
 
 							<div class="dashboard-control col-sm-3 col-md-12">
-								<a class=nav-link href="/dashboard/collections"><i class="fa fa-th-large fa-lg" aria-hidden="true"></i> Collections</a>
+								<a class=nav-link href="/dashboard/collections"><i class="fa fa-th-large fa-lg" aria-hidden="true"></i> Inventory</a>
 							</div>
 
 							<div class="dashboard-control col-sm-3 offset-sm-3 offset-md-0 col-md-12">
@@ -25,30 +25,20 @@
 			<div class="h-100 dashboard-view col-md-10">
 				<div class="container">
 					<div class="row">
-						<div class="col-lg-6">
-							<div class="card text-xs-center">
+
+						<div class="col-lg-5">
+							<div class="card add-card">
 								<div class="card-block">
-									<a href="/dashboard/collections"> Collections</a>
-									<p>{{user.collection_count}}</p>
-									<p class="card-text">Whats up with all thing things and the other things</p>
-									Items:
+									<img class="avatar-small" src="{{ user.photo_url }}" alt="">
+									<input type="text" placeholder="Add something new..">
+										</span class="text-xs-right"> <a   href="#">
+										<i class="fa fa-plus fa-lg" aria-hidden="true"></i>
+									</a>
+									<span>
 								</div>
 							</div>
 						</div>
-
-						<div class="col-lg-6">
-							<div class="card text-xs-center">
-								<a href="">
-									<div class="card-block">
-										<a href="/dashboard/collections"> Collections</a>
-										<p>{{user.collection_count}}</p>
-										<p class="card-text">Whats up with all thing things and the other things</p>
-										Items:
-									</div>
-
-								</a>
-							</div>
-						</div>		
+	
 					</div>
 					
 				</div>

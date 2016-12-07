@@ -6,6 +6,44 @@ nav {
     z-index: 10;
 }
 
+#title {
+    padding: 0px 0px;
+    font-size: 1.7rem;
+    letter-spacing: 2px;
+}
+
+@media (min-width: 992px) {
+    #title {
+        padding: 0px 30px;
+    }
+}
+
+.add-card .card-block {
+    padding: 10px;
+}
+
+.add-card input {
+    height: 40px;
+    margin: 0 20px;
+    font-size: 1.2rem;
+    border: none;
+}
+
+.add-card a {
+    color: #555555;
+    padding: 10px;
+    float: right;
+}
+
+.add-card input:focus {
+    outline: none;
+}
+
+.avatar-small {
+    height: 40px;
+    border-radius: 50%;
+}
+
 
 /*Control Panel styles */
 
@@ -99,7 +137,7 @@ nav {
     height: 50px;
     box-shadow: 1px 1px 6px grey;
     bottom: 50px;
-    right: 100px;
+    right: 50px;
     position: fixed;
     z-index: 3000;
 }

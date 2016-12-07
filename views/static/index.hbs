@@ -1,11 +1,19 @@
+
 <div class="carousel">
   <div class="carousel-item active">
     <img class="third-slide" src="/images/landing-page-cover.png" alt="Third slide">
     <div class="container">
+      
       <div class="carousel-caption">
-        <h1 class="display-3">Inventory Made Easy</h1>
-        <p class="hidden-sm-down" >Find out what the right software can do for you.</p>
-        <p class="google-signin"><a  href="/auth/google" role="button"><img src="/images/google_signin_btn.png" alt="Sign in button"></a></p>
+        {{#if user}}
+          <h1 class="display-3">Welcome Back {{user.first_name}}</h1>
+          <p>Start adding to your inventory.</p>
+          <a class="btn btn-primary btn-lg" href="/dashboard">Dashboard</a>
+        {{else}}
+          <h1 class="display-3">Inventory Made Easy</h1>
+          <p class="hidden-sm-down" >Find out what the right software can do for you.</p>
+          <p class="google-signin"><a  href="/auth/google" role="button"><img src="/images/google_signin_btn.png" alt="Sign in button"></a></p>
+        {{/if}}
       </div>
     </div>
   </div>

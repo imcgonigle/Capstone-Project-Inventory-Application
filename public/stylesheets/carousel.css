@@ -35,7 +35,7 @@ body {
 /* Since positioning the image, we need to help out the caption */
 
 .carousel-caption {
-    z-index: 10;
+    z-index: 9;
 }
 
 
@@ -118,7 +118,7 @@ body {
     }
 }
 
-@media (min-width: 8750px) {
+@media (min-width: 850px) {
     .carousel-caption {
         padding-bottom: 12rem;
     }
