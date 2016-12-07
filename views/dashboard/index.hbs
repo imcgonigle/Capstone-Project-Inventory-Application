@@ -29,23 +29,32 @@
 			<div class="h-100 dashboard-view col-lg-10">
 				<div class="container">
 					<div class="row">
-						<div class="col-lg-12">
-							<h3>Collections <span class="text-xs-right">{{user.collection_count}}</span></h3>
-							<hr>
-						</div>	
+						<div class="col-lg-6">
+							<div class="card text-xs-center collection-card">
+								<div class="card-block">
+									<a href="/dashboard/collections"> Collections</a>
+									<p>{{user.collection_count}}</p>
+									<p class="card-text">Whats up with all thing things and the other things</p>
+									Items:
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-6">
+							<div class="card text-xs-center collection-card">
+								<a href="">
+									<div class="card-block">
+										<a href="/dashboard/collections"> Collections</a>
+										<p>{{user.collection_count}}</p>
+										<p class="card-text">Whats up with all thing things and the other things</p>
+										Items:
+									</div>
+
+								</a>
+							</div>
+						</div>		
 					</div>
-					<div class="row">
-						<div class="col-lg-12">
-							<h3>Friends <span class="text-xs-right">{{user.collection_count}}</span></h3>
-							<hr>
-						</div>	
-					</div>
-					<div class="row">
-						<div class="col-lg-12">
-							<h3>Collections <span class="text-xs-right">{{user.collection_count}}</span></h3>
-							<hr>
-						</div>	
-					</div>
+					
 				</div>
 			</div>
 
