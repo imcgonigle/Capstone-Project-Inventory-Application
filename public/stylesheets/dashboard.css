@@ -10,31 +10,49 @@ nav {
 /*Control Panel styles */
 
 .dashboard-controls {
-    padding: 20px 0;
+    padding: 15px 10px 15px 5px;
     background: #EEEEEE;
     border-right: 1px solid #CCCCCC;
 }
 
-.dashboard-controls .row {
-    padding: 14px 20px;
-}
-
-.control-title {
-    border-bottom: 1px solid #CCCCCC;
-    margin-bottom: 20px;
-}
-
-.control-title a:hover {
-    text-decoration: none;
-    cursor: pointer;
+.dashboard-control {
+    padding: 15px 5px;
 }
 
 .dashboard-controls a {
     color: #444444;
 }
 
+.dashboard-controls .row div:hover {
+    background: #DDDDDD;
+}
+
 
 /* Dashboard View Styles */
+
+
+/* Medium and up*/
+
+@media (min-width: 768px) {
+    .dashboard-controls {
+        height: 100vh;
+        padding: 15px 5px 15px 5px;
+        background: #EEEEEE;
+        border-right: 1px solid #CCCCCC;
+    }
+    .dashboard-controls div {
+        padding: 5px 10px;
+    }
+}
+
+
+/* Large and up*/
+
+@media (min-width: 992px) {
+    .dashboard-controls div {
+        padding: 14px 5px 14px 20px;
+    }
+}
 
 .dashboard-view {
     background: #FFFFFF;
@@ -132,6 +150,30 @@ nav {
     background: #FFFFFF;
 }
 
+.item-card {
+    width: 200px;
+    min-height: 280px;
+}
+
+.item-card .card-img {
+    padding: 20px 25px 20px 25px;
+}
+
+.item-card img {
+    width: 100%;
+    height: 120px;
+    border-bottom: 1px dashed black;
+}
+
+.item-card .card-block {
+    height: 112px;
+}
+
+.item-card .card-footer {
+    border-top: none;
+    background: #333333;
+}
+
 .avatar-nav {
     height: 30px;
 }
@@ -150,4 +192,26 @@ nav {
 .card {
     box-shadow: 1px 1px 3px grey;
     border: none;
+}
+
+
+/* RESPONSIVE CSS
+-------------------------------------------------- */
+
+@media (min-width: 40em) {
+    /* Bump up size of carousel content */
+    .carousel-caption p {
+        margin-bottom: 1.25rem;
+        font-size: 1.25rem;
+        line-height: 1.4;
+    }
+    .featurette-heading {
+        font-size: 50px;
+    }
+}
+
+@media (min-width: 62em) {
+    .featurette-heading {
+        margin-top: 7rem;
+    }
 }

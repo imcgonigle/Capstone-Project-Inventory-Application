@@ -36,7 +36,6 @@ body {
 
 .carousel-caption {
     z-index: 10;
-    padding-bottom: 14rem;
 }
 
 
@@ -97,6 +96,45 @@ body {
 
 /* RESPONSIVE CSS
 -------------------------------------------------- */
+
+@media (min-width: 300px) {
+    .carousel-caption {
+        padding-bottom: 12rem;
+    }
+    .carousel-caption h1 {
+        font-size: 40px;
+    }
+    .google-signin {
+        margin-top: 50px;
+    }
+}
+
+@media (min-width: 700px) {
+    .carousel-caption {
+        padding-bottom: 12rem;
+    }
+    .carousel-caption h1 {
+        font-size: 50px;
+    }
+}
+
+@media (min-width: 8750px) {
+    .carousel-caption {
+        padding-bottom: 12rem;
+    }
+    .carousel-caption h1 {
+        font-size: 60px;
+    }
+}
+
+@media (min-width: 1050px) {
+    .carousel-caption {
+        padding-bottom: 14rem;
+    }
+    .carousel-caption h1 {
+        font-size: 70px;
+    }
+}
 
 @media (min-width: 40em) {
     /* Bump up size of carousel content */
