@@ -9,6 +9,17 @@ body {
     color: #5a5a5a;
 }
 
+.index {
+    background: rgba(46, 48, 50, .1);
+    color: rgb(51, 51, 51);
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    z-index: 10;
+    box-shadow: none;
+}
+
 
 /* CUSTOMIZE THE CAROUSEL
 -------------------------------------------------- */
@@ -17,7 +28,7 @@ body {
 /* Carousel base class */
 
 .carousel {
-    margin-bottom: 4rem;
+    margin-bottom: 6rem;
 }
 
 
@@ -25,36 +36,23 @@ body {
 
 .carousel-caption {
     z-index: 10;
-    padding-bottom: 10rem;
+    padding-bottom: 14rem;
 }
 
 
 /* Declare heights because of positioning of img element */
 
 .carousel-item {
-    height: 32rem;
-    background-color: #777;
+    height: 36rem;
+    box-shadow: 2px 2px 6px grey;
 }
 
 .carousel-item>img {
     position: absolute;
     top: 0;
     left: 0;
-    min-width: 100%;
-    height: 32rem;
-}
-
-.carousel-indicators {
-    top: 1.5rem;
-    right: 1.5rem;
-    bottom: auto;
-    left: auto;
-    width: 1rem;
-    margin-left: 0;
-}
-
-.carousel-indicators>li {
-    margin-bottom: .25rem;
+    max-width: 100%;
+    height: 36rem;
 }
 
 
