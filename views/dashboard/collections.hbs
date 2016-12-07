@@ -31,14 +31,17 @@
 				<div class="container">
 					<div class="row">
 						{{#each collections}}
-						<div class="col-lg-3">
+						<div class="col-lg-3 col-md-4">
 							<a href="/dashboard/collection/{{this.id}}">
-								<div class="card text-xs-center collection-card">
+								<div class="card collection-card">
 									<img class="card-img-top card-img" src="{{ this.thumbnail_url }}" alt="Collection thumbnail">
 									<div class="card-block">
-										<a href="/dashboard/collection/{{this.id}}"> {{this.name}} </a>
-										<p class="card-text">{{this.description}}</p>
-										Items: {{ this.item_count }}
+										<a href="/dashboard/collection/{{this.id}}">{{this.name}}</a>
+										<p class="card-text small">{{this.description}}</p>
+									</div>
+									<div class="card-footer">
+										<span >Items: {{ this.item_count }}</span>
+										<a href=""><i class="fa fa-ellipsis-v fa-lg text-xs-right" aria-hidden="true"></i></a>
 									</div>
 								</div>
 							</a>
