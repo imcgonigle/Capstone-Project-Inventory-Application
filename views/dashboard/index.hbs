@@ -4,24 +4,38 @@
 		<div class="row h-100">
 			<div id="navbarResponsive" class="dashboard-controls col-md-2 col-lg-2 collapse navbar-toggleable-sm">
 				<div class="container-fluid">
+						<div class="row dash-controls-title text-xs-center">
+							<div class="col-sm-3 col-md-12">
+								<p>Home</p>
+							</div>
+						</div>
 						<div class="row">
-							<div class="dashboard-control col-sm-3 col-md-12">
 							<a class=nav-link href="/dashboard/">
-								<i class="fa fa-tachometer fa-lg" aria-hidden="true"></i> Dashboard
+								<div class="dashboard-control col-sm-12 col-md-12">
+									<i class="fa fa-home fa-lg" aria-hidden="true"> </i> Home
+								</div>
 							</a>
+
+								<a class=nav-link href="/dashboard/collections">
+									<div class="dashboard-control col-sm-12 col-md-12">
+										<i class="fa fa-th-large fa-lg" aria-hidden="true"></i> Inventory
+									</div>
+								</a>
+
 							</div>
 
-							<div class="dashboard-control col-sm-3 col-md-12">
-								<a class=nav-link href="/dashboard/collections"><i class="fa fa-th-large fa-lg" aria-hidden="true"></i> Inventory</a>
+							{{!--Start of settings and help row--}}
+							<div class="row dash-control-settings">
+									<a class=nav-link href="/dashboard/settings">
+										<div class="dashboard-control col-sm-3 offset-sm-3 offset-md-0 col-md-12">
+											<i class="fa fa-gear fa-lg" aria-hidden="true"> </i> Settings
+										</div>
+									</a>
 							</div>
-
-							<div class="dashboard-control col-sm-3 offset-sm-3 offset-md-0 col-md-12">
-								<a class=nav-link href="/dashboard/settings"><i class="fa fa-gear fa-lg" aria-hidden="true"></i> Settings</a>
-							</div>
+							{{!--End of settings row--}}
 
 						</div>
 					</div>
-				</div>
 			<div class="h-100 dashboard-view col-md-10">
 				<div class="container">
 					<div class="row">
@@ -29,7 +43,7 @@
 						<div class="col-lg-5">
 							<div class="card add-card">
 								<div class="card-block">
-									<img class="avatar-small" src="{{ user.photo_url }}" alt="">
+									<img class="avatar-small hidden-sm-down" src="{{ user.photo_url }}" alt="User Avatar">
 									<input type="text" placeholder="Add something new..">
 										</span class="text-xs-right"> <a   href="#">
 										<i class="fa fa-plus fa-lg" aria-hidden="true"></i>
@@ -41,6 +55,7 @@
 	
 					</div>
 					
+				</div>
 				</div>
 			</div>
 

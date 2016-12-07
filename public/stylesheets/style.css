@@ -6,6 +6,10 @@ body {
     border-radius: 0;
 }
 
+.avatar-nav {
+    height: 30px;
+}
+
 #title {
     font-family: 'ABeeZee', sans-serif;
     font-weight: bold;
