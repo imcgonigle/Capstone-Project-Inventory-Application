@@ -2,7 +2,7 @@ exports.up = function(knex, Promise) {
     return knex.schema.createTable('items', function(table) {
         table.increments('id');
         table.integer('collection_id')
-            .refernces('id')
+            .references('id')
             .inTable('collections')
             .onDelete('CASCADE');
         table.string('name').notNullable().unique();
