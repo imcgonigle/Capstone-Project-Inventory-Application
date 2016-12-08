@@ -38,9 +38,7 @@ module.exports = {
         });
     },
     updateUser: function(user) {
-
         user.updated_at = new Date();
-
         return Users().where('google_id', user.google_id)
             .update(user)
             .returning('google_id');

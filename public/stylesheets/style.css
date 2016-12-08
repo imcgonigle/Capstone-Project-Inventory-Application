@@ -32,11 +32,21 @@ body {
     z-index: 10;
 }
 
+.btn-cta {
+    background: rgba(51, 51, 51, .7);
+    border: none;
+    width: 300px;
+}
+
+.btn-cta:hover {
+    background: rgba(51, 51, 51, .9);
+}
+
 @media (min-width: 767px) {
     #title {
         padding: 0px 30px;
-        font-size: 2rem;
-        letter-spacing: 3px;
+        font-size: 1.7rem;
+        letter-spacing: 2px;
         margin-top: auto;
         margin-bottom: auto;
     }
@@ -45,7 +55,7 @@ body {
 @media (max-width: 766px) {
     #title {
         padding: 0px 0px;
-        font-size: 1.7rem;
-        letter-spacing: 2px;
+        font-size: 1.4rem;
+        letter-spacing: 1px;
     }
 }

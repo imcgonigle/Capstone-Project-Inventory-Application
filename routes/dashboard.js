@@ -35,16 +35,14 @@ router.get('/collections', function(req, res, next) {
 
 router.post('/collection/new', function(req, res, next) {
 
-    console.log(req.body);
 
     const newCollection = {
-        thumbnailURL: req.body.avatar_url,
+        thumbnailURL: req.body.complete_url,
         name: req.body.name,
         description: req.body.description,
         ownerID: req.user.id
     };
 
-    console.log('router collection', newCollection);
 
     collectionQueries.addCollection(newCollection)
         .then(data => {

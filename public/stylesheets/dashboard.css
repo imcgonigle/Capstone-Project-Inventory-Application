@@ -6,12 +6,6 @@ nav {
     z-index: 10;
 }
 
-#title {
-    padding: 0px 0px;
-    font-size: 1.7rem;
-    letter-spacing: 2px;
-}
-
 @media (min-width: 992px) {
     #title {
         padding: 0px 30px;
@@ -55,14 +49,15 @@ nav {
 /*Control Panel styles */
 
 .dashboard-controls {
-    background: #EEEEEE;
-    border-right: 1px solid #CCCCCC;
+    background: #3C4A54;
+    border-right: 1px solid #333;
     padding: 0;
+    z-index: 21;
 }
 
 .dash-controls-title {
     padding: 20px 20px 0px 10px;
-    background: #E8E8E8;
+    color: #CCCCCC;
 }
 
 .dashboard-control {
@@ -70,16 +65,16 @@ nav {
 }
 
 .dashboard-controls a {
-    color: #444444;
+    color: #CCCCCC;
     display: block;
 }
 
 .dashboard-control:hover {
-    background: #DDDDDD;
+    background: rgb(48, 58, 66);
 }
 
 .dash-control-settings {
-    border-top: 1px solid #CCCCCC;
+    border-top: 1px solid rgb(48, 58, 66);
 }
 
 
@@ -88,7 +83,6 @@ nav {
 @media (min-width: 768px) {
     .dashboard-controls {
         height: 100vh;
-        background: #EEEEEE;
         border-right: 1px solid #CCCCCC;
         padding: 0;
     }
@@ -137,10 +131,14 @@ nav {
     outline: none;
 }
 
+.modal-content {
+    z-index: 102;
+}
+
 .new-collection {
     text-align: center;
     color: #EEEEEE;
-    background: rgba(219, 68, 55, .9);
+    background: rgba(33, 8, 77, 1);
     border-radius: 50%;
     text-align: center;
     padding: 10px;
@@ -150,12 +148,13 @@ nav {
     bottom: 50px;
     right: 50px;
     position: fixed;
-    z-index: 3000;
+    z-index: 100;
 }
 
 .new-collection:hover {
     text-decoration: none;
-    background: rgba(219, 68, 55, .95);
+    background: rgba(33, 8, 77, .8);
+    box-shadow: 2px 4px 6px grey;
     color: white;
 }
 

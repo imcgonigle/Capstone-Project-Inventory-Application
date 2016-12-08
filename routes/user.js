@@ -53,11 +53,15 @@ router.get('/update', (req, res, next) => {
 router.post('/update', (req, res, next) => {
 
     let userInfo = {
-        googleID: req.user.google_id,
+        google_id: req.user.google_id,
         email: req.body.email,
+        first_name: req.body.first_name,
+        last_name: req.body.last_name,
         about: req.body.about,
         city: req.body.city
     };
+
+    console.log(userInfo)
 
     userQueries.updateUser(userInfo)
         .then(data => {
