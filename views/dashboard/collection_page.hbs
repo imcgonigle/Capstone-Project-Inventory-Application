@@ -91,7 +91,9 @@
 													<label for="image_url">Item Image</label>
 													<img style="height: 100px; width: 100px;" id="preview" src="/images/defaults/items.png">
 													<input type="file" class="form-control-file" name="image_url" id="image_url" aria-describedby="fileHelp">
-													<input type="hidden" name="s3_image_url" id="s3_image_url" value="/images/defaults/items.png">
+													<input type="hidden" name="user_id" id="user_id" value="{{user.id}}">
+													<input type="hidden" name="complete_url" id="complete_url" value="/images/defaults/items.png">
+													<input type="hidden" name="photo_for" id="photo_for" value="item">
 												</div>
 
 												<script>

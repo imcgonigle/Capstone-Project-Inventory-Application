@@ -84,7 +84,10 @@
 														<div class="col-lg-6">
 															<label for="image_url">Collection Thumbnail</label>
 															<input type="file" class="form-control-file" name="image_url" id="image_url" aria-describedby="fileHelp">
-															<input type="hidden" id="complete_url" name="complete_url" value="/images/defaults/collections.png">															
+															<input type="hidden" id="complete_url" name="complete_url" value="/images/defaults/collections.png">
+															<input type="hidden" name="user_id" id="user_id" value="{{user.id}}">
+															<input type="hidden" name="photo_for" id="photo_for" value="collection">
+
 														</div>
 
 														<div class="col-lg-3">

@@ -2,20 +2,23 @@
     document.getElementById("image_url").onchange = () => {
         const files = document.getElementById('image_url').files;
         const file = files[0];
+        const user_id = document.getElementById('user_id').value;
+        const photo_for = document.getElementById('photo_for').value;
         if (file == null) {
             return alert('No file selected.');
         }
-        getSignedRequest(file);
+        getSignedRequest(file, user_id, photo_for);
     };
 })();
 
-function getSignedRequest(file) {
+function getSignedRequest(file, user_id, photo_for) {
     const xhr = new XMLHttpRequest();
-    xhr.open('GET', `/sign-s3?file-name=${file.name}&file-type=${file.type}`);
+    xhr.open('GET', `/sign-s3?file-name=${photo_for}s/${user_id}/${Date.now()}&file-type=${file.type}`);
     xhr.onreadystatechange = () => {
         if (xhr.readyState === 4) {
             if (xhr.status === 200) {
                 const response = JSON.parse(xhr.responseText);
+                console.log(response)
                 uploadFile(file, response.signedRequest, response.url);
             } else {
                 alert('Could not get signed URL.');

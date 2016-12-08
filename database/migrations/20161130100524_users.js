@@ -9,7 +9,6 @@ exports.up = function(knex, Promise) {
         table.integer('item_count');
         table.string('photo_url');
         table.text('about');
-        table.string('city');
         table.dateTime('created_at');
         table.dateTime('updated_at');
     });

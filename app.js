@@ -49,6 +49,8 @@ app.use(flash());
 
 app.get('/sign-s3', (req, res) => {
 
+    console.log(req.query)
+
     const s3 = new aws.S3({
         region: 'us-west-2',
     });
@@ -68,10 +70,12 @@ app.get('/sign-s3', (req, res) => {
             console.log(err);
             return res.end();
         }
+
         const returnData = {
             signedRequest: data,
             url: `https://${S3_BUCKET}.s3.amazonaws.com/${fileName}`
         };
+
         res.write(JSON.stringify(returnData));
         res.end();
     });
