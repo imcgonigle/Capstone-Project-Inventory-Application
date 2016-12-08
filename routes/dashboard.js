@@ -1,18 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var multer = require('multer');
 
-var storage = multer.diskStorage({
-    destination: function(req, file, cb) {
-        let path = __dirname + '/../public/uploads/';
-        cb(null, path);
-    },
-    filename: function(req, file, cb) {
-        cb(null, req.user.id + 'collection' + req.user.collection_count + '.' + file.originalname.slice(-3));
-    }
-});
-
-var upload = multer({ storage: storage });
 
 const collectionQueries = require('../database/queries/collection_queries.js');
 
@@ -45,15 +33,18 @@ router.get('/collections', function(req, res, next) {
 
 });
 
-router.post('/collection/new', upload.single('thumbnail'), function(req, res, next) {
-    var url = '';
-    req.file ? url = '/uploads/' + req.file.filename : url = '/images/defaults/collections.png';
+router.post('/collection/new', function(req, res, next) {
+
+    console.log(req.body);
+
     const newCollection = {
-        thumbnailURL: url,
+        thumbnailURL: req.body.avatar_url,
         name: req.body.name,
         description: req.body.description,
         ownerID: req.user.id
     };
+
+    console.log('router collection', newCollection);
 
     collectionQueries.addCollection(newCollection)
         .then(data => {

@@ -1,25 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const multer = require('multer');
 
 const itemQueries = require('../database/queries/item_queries');
 const collectionQueries = require('../database/queries/collection_queries')
 
-var storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        let path = __dirname + '/../public/uploads/';
-        cb(null, path);
-    },
-    filename: (req, file, cb) => {
-        cb(null, req.params.collection_id + 'items' + new Date() + '.' + file.originalname.slice(-3));
-    }
-});
 
-var upload = multer({ storage: storage });
+router.post('/add/:collection_id', (req, res, next) => {
 
-router.post('/add/:collection_id', upload.single('image_url'), (req, res, next) => {
-    let url = '';
-    req.file ? url = '/uploads/' + req.file.filename : url = '/images/defaults/items.png';
     collectionQueries.getCollectionByID(req.params.collection_id)
         .then(collections => {
             const collection = collections[0];
@@ -30,7 +17,7 @@ router.post('/add/:collection_id', upload.single('image_url'), (req, res, next) 
                     collection_id: collection.id,
                     brand: req.params.brand,
                     serial_number: req.params.serial_number,
-                    image_url: url,
+                    image_url: req.body.s3_image_url,
                     rating: req.params.rating,
                     created_at: new Date(),
                     updated_at: new Date()

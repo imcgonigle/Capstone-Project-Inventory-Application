@@ -72,12 +72,14 @@
 											<h4 class="modal-title">New Collection</h4>
 										</div>
 										<div class="modal-body">
-											<form id="new-collection-form" action="/dashboard/collection/new" method="POST" enctype="multipart/form-data">
+											<form id="new-collection-form" action="/dashboard/collection/new" method="POST">
 												<div class="form-group">
 													<div class="row">
 														<div class="col-lg-9">
 															<label for="thumbnail">Collection Thumbnail</label>
+															<img style="height: 100px; width: 100px;" id="preview" src="/images/defaults/collections.png">
 															<input type="file" class="form-control-file" name="thumbnail" id="thumbnail" aria-describedby="fileHelp">
+															<input type="hidden" id="avatar_url" name="avatar_url" value="/images/defaults/collections.png">
 															<small id="fileHelp" class="form-text text-muted">This will be used for your dashboard.</small>
 														</div>
 
@@ -119,3 +121,55 @@
 
 	</div>
 </main>
+
+
+<script>
+															(() => {
+															document.getElementById("thumbnail").onchange = () => {
+																const files = document.getElementById('thumbnail').files;
+																const file = files[0];
+																console.log('file:', file);
+																if(file == null){
+																	return alert('No file selected.');
+																}
+																getSignedRequest(file);
+															};
+														})();
+
+														function getSignedRequest(file){
+															console.log('getting signed request')
+															const xhr = new XMLHttpRequest();
+															xhr.open('GET', `/sign-s3?file-name=${file.name}&file-type=${file.type}`);
+															xhr.onreadystatechange = () => {
+																if(xhr.readyState === 4){
+																	if(xhr.status === 200){
+																		const response = JSON.parse(xhr.responseText);
+																		console.log('response:', response)
+																		uploadFile(file, response.signedRequest, response.url);
+																	}
+																	else{
+																		alert('Could not get signed URL.');
+																	}
+																}
+															};
+															xhr.send();
+														}
+
+														function uploadFile(file, signedRequest, url){
+															const xhr = new XMLHttpRequest();
+															xhr.open('PUT', signedRequest);
+															xhr.onreadystatechange = () => {
+																if(xhr.readyState === 4){
+																	if(xhr.status === 200){
+																		console.log(url)
+																		document.getElementById('preview').src = url;
+																		document.getElementById('avatar_url').value = url;
+																	}
+																	else{
+																		alert('Could not upload file.');
+																	}
+																}
+															};
+															xhr.send(file);
+														}
+														</script>

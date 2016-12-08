@@ -15,6 +15,7 @@ module.exports = {
             .increment('collection_count', 1)
             .then(data => { console.log(data) })
             .catch(error => { console.error(error) })
+        console.log('collection', collection);
 
         return Collections().insert({
                 owner_id: collection.ownerID,

@@ -6,6 +6,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+const aws = require('aws-sdk')
+
 var routes = require('./routes/index');
 var users = require('./routes/user');
 var dashboard = require('./routes/dashboard');
@@ -17,6 +19,8 @@ var flash = require('connect-flash');
 require('./config/passport')(passport);
 
 var session = require('express-session');
+
+const S3_BUCKET = process.env.S3_BUCKET;
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -41,6 +45,37 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session()); // persistent login sessions
 app.use(flash());
+
+
+app.get('/sign-s3', (req, res) => {
+
+    const s3 = new aws.S3({
+        region: 'us-west-2',
+    });
+    const fileName = req.query['file-name'];
+    const fileType = req.query['file-type'];
+    const s3Params = {
+        Bucket: S3_BUCKET,
+        Key: fileName,
+        Expires: 60,
+        ContentType: fileType,
+        ACL: 'public-read'
+    };
+
+    s3.getSignedUrl('putObject', s3Params, (err, data) => {
+
+        if (err) {
+            console.log(err);
+            return res.end();
+        }
+        const returnData = {
+            signedRequest: data,
+            url: `https://${S3_BUCKET}.s3.amazonaws.com/${fileName}`
+        };
+        res.write(JSON.stringify(returnData));
+        res.end();
+    });
+});
 
 
 app.use('/', routes);
