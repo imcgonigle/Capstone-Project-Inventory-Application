@@ -10,13 +10,13 @@
 							</div>
 						</div>
 						<div class="row">
-							<a class=nav-link href="/dashboard/">
+							<a class="nav-link" href="/dashboard/">
 								<div class="dashboard-control col-sm-12">
 									<i class="fa fa-home fa-lg" aria-hidden="true"> </i> Home
 								</div>
 							</a>
 
-								<a class=nav-link href="/dashboard/collections">
+								<a class="nav-link" href="/dashboard/collections">
 									<div class="dashboard-control col-sm-12">
 										<i class="fa fa-th fa-lg" aria-hidden="true"></i> Inventory
 									</div>
@@ -26,9 +26,15 @@
 
 							{{!--Start of settings and help row--}}
 							<div class="row dash-control-settings">
-									<a class=nav-link href="/dashboard/settings">
+									<a class="nav-link" href="/dashboard/settings">
 										<div class="dashboard-control col-sm-3 offset-sm-3 offset-md-0 col-md-12">
 											<i class="fa fa-gear fa-lg" aria-hidden="true"> </i> Settings
+										</div>
+									</a>
+
+									<a class="nav-link hidden-md-up" href="/logout">
+										<div class="dashboard-control col-sm-3 offset-sm-3 offset-md-0 col-md-12">
+											<i class="fa fa-sign-out fa-lg" aria-hidden="true"> </i> Logout
 										</div>
 									</a>
 							</div>
@@ -38,6 +44,12 @@
 				</div>
 			<div class="h-100 dashboard-view col-md-10">
 				<div class="container">
+					<div class="row">
+						<div class="col-lg-3">
+							<h3>Settings</h3>
+							<br>
+						</div>
+					</div>
 					<div class="row">
             <div class="col-lg-6">
               <h2> <img src="{{ user.photo_url }}" alt="Users photo"> {{ user.first_name }} {{ user.last_name }}</h2>
