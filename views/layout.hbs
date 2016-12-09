@@ -14,7 +14,7 @@
 		<header>
 			<nav class="navbar navbar-static-top navbar-dark {{#if index}} index navbar-dark{{/if}}">
 				<button class="navbar-toggler {{#if index }} hidden-xs-up {{/if}} hidden-md-up float-xs-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"></button>
-				<a class="navbar-brand brand-logo" id="title" href="/">Up<span class="title-color">listed</span></a>
+				<a class="navbar-brand brand-logo" id="title" href="{{#if user}}/dashboard{{else}}/{{/if}}">Up<span class="title-color">listed</span></a>
 				<div class="container-fluid">
 
 					<ul class="nav navbar-nav float-xs-right">
