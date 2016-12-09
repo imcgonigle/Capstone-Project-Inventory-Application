@@ -40,6 +40,12 @@ nav {
     }
 }
 
+@media(max-width: 500px) {
+    .dashboard-view {
+        padding: 40px 0px;
+    }
+}
+
 .avatar-small {
     height: 40px;
     border-radius: 50%;
@@ -99,7 +105,7 @@ nav {
 
 .dashboard-view {
     background: #FFFFFF;
-    padding: 40px;
+    padding: 40px 0;
 }
 
 .dashboard-view a:hover {
