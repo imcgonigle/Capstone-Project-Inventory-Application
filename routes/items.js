@@ -17,7 +17,7 @@ router.post('/add/:collection_id', (req, res, next) => {
                     collection_id: collection.id,
                     brand: req.params.brand,
                     serial_number: req.params.serial_number,
-                    image_url: req.body.s3_image_url,
+                    image_url: req.body.complete_url,
                     rating: req.params.rating,
                     created_at: new Date(),
                     updated_at: new Date()
